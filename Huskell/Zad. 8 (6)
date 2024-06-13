@@ -1,0 +1,36 @@
+main :: IO()
+main = do
+  print (append ["green", "gray"] ["black", "white", "blue", "yellow", "red"])
+  print (member "grey" ["black", "grey"])
+  print (lastEl ["black", "white", "blue", "yellow", "red"])
+  print (delete "white" ["black", "white", "blue", "yellow", "red"])
+  print (split 5 [1, 4, 7, 6, 3, 7, 8])
+  
+  
+append :: Eq a => [a] -> [a] -> [a]
+append [] [] = []
+append l m = l ++ m
+  
+member :: Eq a => a -> [a] -> Bool
+member x [] = False
+member x (first:rest) = x == first || member x rest
+
+lastEl :: Eq a => [a] -> a
+lastEl [] = error "empty list"
+lastEl [a] = a
+lastEl (first:rest) = lastEl rest
+
+
+delete :: Eq a => a -> [a] -> [a]
+delete x [] = []
+delete x (first:rest) 
+  | x == first = rest
+  | otherwise = first: delete x rest
+  
+split :: Ord a => a -> [a] -> ([a], [a])
+split x [] = ([], [])
+split x (first:rest)
+      | first < x = (first:l1, l2)
+      | otherwise = (l1, first:l2)
+      where
+        (l1, l2) = split x rest
