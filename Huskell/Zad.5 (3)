@@ -1,0 +1,10 @@
+main :: IO()
+main = do
+  print (rev [1, 2, 3, 4])
+  
+rev :: [a] -> [a]
+rev x = rev' x []
+
+rev' :: [a] -> [a] -> [a]
+rev' [] x = x
+rev' (first:rest) x = rev' rest (first:x)
