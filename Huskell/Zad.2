@@ -1,0 +1,25 @@
+--konstrukcja if else
+solve :: Float -> Float -> Float -> (Float, Float)
+solve a b c =
+  if delta >= 0
+      then ((-b + sqrt delta) / (2 * a),(-b - sqrt delta) / (2 * a))
+  else error "Brak rozwiazan rzeczywistych"
+  where
+      delta = b^2 - 4 * a * c
+      
+main :: IO()
+main = do
+  print(solve 3 10 7)
+
+  
+--konstrukcja case
+solve :: Float -> Float -> Float -> (Float, Float)
+solve a b c 
+  | delta >= 0 = ((-b + sqrt delta) / (2 * a),(-b - sqrt delta) / (2 * a))
+  | otherwise = error "Brak rozwiazan rzeczywistych"
+  where
+      delta = b^2 - 4 * a * c
+      
+main :: IO()
+main = do
+  print(solve 3 10 7)
