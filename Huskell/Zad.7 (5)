@@ -1,0 +1,8 @@
+main :: IO()
+main = do
+  print (color ["black", "white", "blue", "yellow", "red"])
+  
+  
+color :: [String] -> [(String, String)]
+color [] = []
+color (first:rest) = [(first, x) | x <- rest] ++ color rest
