@@ -1,0 +1,11 @@
+main :: IO()
+main = do
+  
+    print (filterEl (> 3) [4, 3, 6, 7, 4, 7, 8, 2])
+  
+  
+filterEl :: (a -> Bool) -> [a] -> [a]
+filterEl x [] = []
+filterEl p (first:rest)
+    | p first = first : filterEl p rest
+    | otherwise = filterEl p rest
